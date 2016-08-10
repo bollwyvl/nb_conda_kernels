@@ -27,7 +27,7 @@ class CondaKernelSpecManager(KernelSpecManager):
     def _load_finders_iter(self):
         for name, ep in entrypoints.get_group_named(ENTRY_POINT).items():
             try:
-                yield name, ep.load()()
+                yield name, ep.load()(parent=self)
                 self.log.debug("[nb_env_kernels] loaded %s spec finder", name)
             except Exception as err:
                 self.log.warn("Failed to import finder %s: %s", name, err)

@@ -15,7 +15,9 @@ CACHE_TIMEOUT = 60
 
 
 class CondaSpecFinder(BaseSpecFinder):
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
+        super(CondaSpecFinder, self).__init__(*args, **kwargs)
+        raise Exception(self.config)
         self._conda_info_cache = None
         self._conda_info_cache_expiry = None
 
