@@ -16,5 +16,10 @@ setuptools.setup(
     long_description=open('README.md').read(),
     packages=setuptools.find_packages(),
     include_package_data=True,
-    zip_safe=False
+    zip_safe=False,
+    entry_points={
+        'nb_env_kernels.spec_finder': [
+            'conda = nb_conda_kernels.spec_finders.conda:CondaSpecFinder'
+        ]
+    }
 )
